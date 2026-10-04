@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pixel 4a (sunfish): Snapdragon 730G, 6 little + 2 big cores. -->
+<kernel-manager>
+    <cpu
+        id="little"
+        group="Little Cluster"
+        cpuIds="0,1,2,3,4,5"
+        minId="axion_min_freq"
+        maxId="axion_max_freq"
+        governorId="little_cpu_governor"
+        minNode="/sys/devices/system/cpu/cpufreq/policy0/scaling_min_freq"
+        maxNode="/sys/devices/system/cpu/cpufreq/policy0/scaling_max_freq"
+        curFreqPath="/sys/devices/system/cpu/cpufreq/policy0/scaling_cur_freq"
+        availablePath="/sys/devices/system/cpu/cpufreq/policy0/scaling_available_frequencies"
+        governorNode="/sys/devices/system/cpu/cpufreq/policy0/scaling_governor"
+        governorAvailablePath="/sys/devices/system/cpu/cpufreq/policy0/scaling_available_governors" />
+
+    <cpu
+        id="big"
+        group="Big Cluster"
+        cpuIds="6,7"
+        minId="axion_min_freq_big"
+        maxId="axion_max_freq_big"
+        governorId="big_cpu_governor"
+        minNode="/sys/devices/system/cpu/cpufreq/policy6/scaling_min_freq"
+        maxNode="/sys/devices/system/cpu/cpufreq/policy6/scaling_max_freq"
+        curFreqPath="/sys/devices/system/cpu/cpufreq/policy6/scaling_cur_freq"
+        availablePath="/sys/devices/system/cpu/cpufreq/policy6/scaling_available_frequencies"
+        governorNode="/sys/devices/system/cpu/cpufreq/policy6/scaling_governor"
+        governorAvailablePath="/sys/devices/system/cpu/cpufreq/policy6/scaling_available_governors" />
+
+    <!-- Nahida lineage-24.0 28f9290ae067d3e7857126eb6312720dbe9c7c80; speed bin 0, 172 ONLY. -->
+    <gpu
+        node="/sys/class/kgsl/kgsl-3d0/devfreq"
+        currentNode="/sys/class/kgsl/kgsl-3d0/gpuclk"
+        usageNode="/sys/class/kgsl/kgsl-3d0/gpu_busy_percentage"
+        frequencyMultiplier="1"
+        values="825000000,800000000,650000000,565000000,430000000,355000000,267000000,180000000" />
+</kernel-manager>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Pixel 4a / sunfish / Snapdragon 730G / Adreno 618.
+    EXPERIMENTAL ATMC PORT. The parser/backend for this XML was not found in
+    the reviewed public source snapshots. The MHz and GPU-index conventions
+    follow commit 0fc66fc67cc93a9464723db512eaf4d8b6a93e5a and are assumptions,
+    not verified runtime behavior. Validate them before shipping this file.
+    Thermal scene thresholds are inherited, not calibrated for sunfish.
+    Keep Google's thermal HAL, thermal-engine and kernel protections enabled.
+-->
+<perf-config>
+    <atmc>
+        <cpu_levels>
+            <!-- Draft: retain the reference commit's integer-MHz convention.
+                 CPU0-5: policy0; CPU6-7: policy6. No prime cluster.
+                 These are requested caps, not an exact kernel OPP table.
+                 Verify the ATMC backend unit conversion before enabling. -->
+            <level id="1" little="300,1804" big="300,2208"/>
+            <level id="2" little="300,1804" big="300,2169"/>
+            <level id="3" little="300,1804" big="300,1939"/>
+            <level id="4" little="300,1708" big="300,1939"/>
+            <level id="5" little="300,1708" big="300,1843"/>
+            <level id="6" little="300,1612" big="300,1843"/>
+            <level id="7" little="300,1612" big="300,1708"/>
+            <level id="8" little="300,1497" big="300,1708"/>
+            <level id="9" little="300,1497" big="300,1555"/>
+            <level id="10" little="300,1324" big="300,1555"/>
+            <level id="11" little="300,1324" big="300,1324"/>
+            <level id="12" little="300,1248" big="300,1324"/>
+            <level id="13" little="300,1248" big="300,1209"/>
+            <level id="14" little="300,1017" big="300,1209"/>
+            <level id="15" little="300,1017" big="300,1094"/>
+            <level id="16" little="300,1017" big="300,979"/>
+            <level id="17" little="300,768" big="300,979"/>
+            <level id="18" little="300,768" big="300,806"/>
+            <level id="19" little="300,768" big="300,652"/>
+            <level id="20" little="300,576" big="300,652"/>
+            <level id="21" little="300,576" big="300,652"/>
+            <level id="22" little="300,576" big="300,652"/>
+            <level id="23" little="300,300" big="300,652"/>
+            <level id="24" little="300,300" big="300,652"/>
+            <level id="25" little="300,300" big="300,300"/>
+            <level id="26" little="300,300" big="300,300"/>
+            <level id="27" little="300,300" big="300,300"/>
+        </cpu_levels>
+        <gpu_levels>
+            <!-- Draft: retain the reference commit's Qualcomm power-level
+                 index convention. These are NOT MHz or Hz.
+                 Indices 0-5 are present in the reviewed sdmmagpie speed bins.
+                 Verify the active bin and ATMC index semantics on the device. -->
+            <level id="1" min="0" max="0"/>
+            <level id="2" min="0" max="1"/>
+            <level id="3" min="0" max="2"/>
+            <level id="4" min="0" max="3"/>
+            <level id="5" min="0" max="4"/>
+            <level id="6" min="0" max="5"/>
+            <level id="7" min="0" max="5"/>
+            <level id="8" min="0" max="5"/>
+            <level id="9" min="0" max="5"/>
+            <level id="10" min="0" max="5"/>
+            <level id="11" min="0" max="5"/>
+        </gpu_levels>
+        <scenes>
+            <scene name="default_scene">
+                <level id="5">
+                    <action unit="cpu" status="12"/>
+                </level>
+                <level id="8">
+                    <action unit="cpu" status="13"/>
+                </level>
+                <level id="9">
+                    <action unit="cpu" status="14"/>
+                    <action unit="dexopt" status="1"/>
+                </level>
+                <level id="10">
+                    <action unit="cpu" status="16"/>
+                    <action unit="bg_killer" status="3"/>
+                </level>
+                <level id="11">
+                    <action unit="cpu" status="19"/>
+                    <action unit="bg_killer" status="4"/>
+                </level>
+            </scene>
+            <scene name="game">
+                <level id="5">
+                    <action unit="cpu" status="8"/>
+                </level>
+                <level id="8">
+                    <action unit="cpu" status="9"/>
+                </level>
+                <level id="9">
+                    <action unit="cpu" status="10"/>
+                </level>
+                <level id="10">
+                    <action unit="cpu" status="17"/>
+                </level>
+                <level id="11">
+                    <action unit="gpu" status="7"/>
+                    <action unit="cpu" status="20"/>
+                </level>
+                <level id="12">
+                    <action unit="gpu" status="10"/>
+                </level>
+            </scene>
+            <scene name="heating_fgs">
+                <level id="5">
+                    <action unit="cpu" status="20"/>
+                </level>
+                <level id="7">
+                    <action unit="cpu" status="22"/>
+                </level>
+                <level id="10">
+                    <action unit="cpu" status="24"/>
+                </level>
+            </scene>
+            <scene name="axcamera_photo_preview">
+                <level id="7">
+                    <action unit="cpu" status="9"/>
+                </level>
+                <level id="8">
+                    <action unit="cpu" status="11"/>
+                </level>
+                <level id="9">
+                    <action unit="cpu" status="13"/>
+                </level>
+                <level id="10">
+                    <action unit="cpu" status="16"/>
+                </level>
+                <level id="11">
+                    <action unit="cpu" status="21"/>
+                </level>
+                <level id="12">
+                    <action unit="cpu" status="23"/>
+                </level>
+            </scene>
+        </scenes>
+        <apps/>
+    </atmc>
+</perf-config>
